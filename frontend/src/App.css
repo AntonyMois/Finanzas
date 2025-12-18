@@ -1,0 +1,292 @@
+.app-root {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at top left, #1f2937, #020617);
+  color: #f9fafb;
+  padding: 2rem;
+  box-sizing: border-box;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 420px;
+  background: rgba(15, 23, 42, 0.95);
+  border-radius: 1rem;
+  padding: 2.5rem 2.25rem;
+  box-shadow:
+    0 20px 25px -5px rgba(15, 23, 42, 0.5),
+    0 10px 10px -5px rgba(15, 23, 42, 0.4);
+  border: 1px solid rgba(148, 163, 184, 0.2);
+}
+
+.auth-card h1 {
+  font-size: 1.6rem;
+  margin: 0 0 0.75rem;
+}
+
+.subtitle {
+  margin: 0 0 1.5rem;
+  color: #9ca3af;
+  font-size: 0.95rem;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.auth-form label {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.35rem;
+  font-size: 0.9rem;
+}
+
+.auth-form input {
+  width: 100%;
+  padding: 0.6rem 0.75rem;
+  border-radius: 0.5rem;
+  border: 1px solid rgba(156, 163, 175, 0.7);
+  background: rgba(15, 23, 42, 0.9);
+  color: #f9fafb;
+  outline: none;
+  font-size: 0.95rem;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+}
+
+.auth-form input::placeholder {
+  color: #6b7280;
+}
+
+.auth-form input:focus {
+  border-color: #22c55e;
+  box-shadow: 0 0 0 1px rgba(34, 197, 94, 0.35);
+  background: rgba(15, 23, 42, 1);
+}
+
+.auth-form button {
+  margin-top: 0.5rem;
+  padding: 0.7rem 1rem;
+  border-radius: 0.6rem;
+  border: none;
+  background: linear-gradient(to right, #22c55e, #16a34a);
+  color: #022c22;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: transform 0.1s ease, box-shadow 0.1s ease, filter 0.1s ease;
+}
+
+.auth-form button:hover:not(:disabled) {
+  filter: brightness(1.05);
+  box-shadow: 0 10px 15px -3px rgba(34, 197, 94, 0.4);
+  transform: translateY(-1px);
+}
+
+.auth-form button:disabled {
+  opacity: 0.7;
+  cursor: default;
+  box-shadow: none;
+}
+
+.auth-footer {
+  margin-top: 0.9rem;
+  font-size: 0.85rem;
+  color: #9ca3af;
+}
+
+.auth-link {
+  border: none;
+  background: none;
+  color: #22c55e;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  }
+
+.auth-link:hover {
+  color: #4ade80;
+}
+
+.error-message {
+  width: 100%;
+  background: rgba(239, 68, 68, 0.12);
+  border: 1px solid rgba(248, 113, 113, 0.6);
+  color: #fecaca;
+  border-radius: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.85rem;
+}
+
+.loading {
+  color: #e5e7eb;
+  font-size: 1rem;
+}
+
+.dashboard {
+  width: 100%;
+  max-width: 960px;
+  background: rgba(15, 23, 42, 0.98);
+  border-radius: 1rem;
+  padding: 1.75rem 1.75rem 2rem;
+  box-shadow:
+    0 20px 25px -5px rgba(15, 23, 42, 0.5),
+    0 10px 10px -5px rgba(15, 23, 42, 0.4);
+  border: 1px solid rgba(148, 163, 184, 0.24);
+}
+
+.dashboard-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.dashboard-header-left {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.dashboard-logo {
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  background: radial-gradient(circle at 30% 0, #22c55e, #16a34a 45%, #065f46 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 15px -3px rgba(22, 163, 74, 0.6);
+}
+
+.dashboard-logo-initials {
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: #022c22;
+}
+
+.dashboard-header-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.75rem;
+}
+
+.dashboard-header h1 {
+  margin: 0 0 0.25rem;
+  font-size: 1.5rem;
+}
+
+.dashboard-header p {
+  margin: 0;
+  color: #9ca3af;
+  font-size: 0.95rem;
+}
+
+.dashboard-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  justify-content: flex-end;
+}
+
+.dashboard-nav-item {
+  padding: 0.4rem 0.8rem;
+  border-radius: 999px;
+  border: 1px solid rgba(55, 65, 81, 0.9);
+  background: rgba(15, 23, 42, 0.9);
+  color: #e5e7eb;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease,
+    box-shadow 0.15s ease, transform 0.1s ease;
+}
+
+.dashboard-nav-item:hover {
+  background: rgba(31, 41, 55, 1);
+  border-color: rgba(75, 85, 99, 1);
+  transform: translateY(-1px);
+}
+
+.dashboard-nav-item-active {
+  background: linear-gradient(to right, #22c55e, #16a34a);
+  border-color: transparent;
+  color: #022c22;
+  box-shadow: 0 10px 15px -3px rgba(34, 197, 94, 0.4);
+}
+
+.logout {
+  padding: 0.5rem 0.9rem;
+  border-radius: 999px;
+  border: 1px solid rgba(248, 113, 113, 0.6);
+  background: rgba(127, 29, 29, 0.9);
+  color: #fee2e2;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+.logout:hover {
+  background: rgba(185, 28, 28, 1);
+  box-shadow: 0 8px 12px -4px rgba(127, 29, 29, 0.6);
+  transform: translateY(-1px);
+}
+
+.dashboard-main {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+  gap: 1.5rem;
+}
+
+.dashboard-card {
+  background: rgba(15, 23, 42, 0.9);
+  border-radius: 0.9rem;
+  padding: 1.2rem 1.3rem;
+  border: 1px solid rgba(55, 65, 81, 0.9);
+}
+
+.dashboard-card h2 {
+  margin: 0 0 0.75rem;
+  font-size: 1.1rem;
+}
+
+.dashboard-card p {
+  margin: 0;
+  color: #9ca3af;
+  font-size: 0.93rem;
+  line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+  .app-root {
+    padding: 1.5rem 1rem;
+  }
+
+  .dashboard {
+    padding: 1.5rem 1.25rem 1.75rem;
+  }
+
+  .dashboard-main {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .dashboard-header-right {
+    align-items: flex-start;
+  }
+}
