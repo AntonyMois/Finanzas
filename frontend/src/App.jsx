@@ -138,110 +138,137 @@ function LoginForm({ onLoginSuccess }) {
   )
 }
 
+// Barra superior tipo menú principal (similar a la captura de Odoo)
+function DashboardTopBar({ user, onLogout, activeSection, onChangeSection }) {
+  return (
+    <header className="topbar">
+      <div className="topbar-left">
+        <div className="topbar-logo">
+          <span className="topbar-logo-text">FA</span>
+        </div>
+      </div>
+
+      <nav className="topbar-center">
+        <button
+          type="button"
+          className={
+            activeSection === 'aplicaciones'
+              ? 'topbar-link topbar-link-active'
+              : 'topbar-link'
+          }
+          onClick={() => onChangeSection('aplicaciones')}
+        >
+          Aplicaciones
+        </button>
+        <button
+          type="button"
+          className={
+            activeSection === 'industrias'
+              ? 'topbar-link topbar-link-active'
+              : 'topbar-link'
+          }
+          onClick={() => onChangeSection('industrias')}
+        >
+          Industrias
+        </button>
+        <button
+          type="button"
+          className={
+            activeSection === 'empresas'
+              ? 'topbar-link topbar-link-active'
+              : 'topbar-link'
+          }
+          onClick={() => onChangeSection('empresas')}
+        >
+          Empresas
+        </button>
+        <button
+          type="button"
+          className={
+            activeSection === 'precios'
+              ? 'topbar-link topbar-link-active'
+              : 'topbar-link'
+          }
+          onClick={() => onChangeSection('precios')}
+        >
+          Precios
+        </button>
+        <button
+          type="button"
+          className={
+            activeSection === 'ayuda'
+              ? 'topbar-link topbar-link-active'
+              : 'topbar-link'
+          }
+          onClick={() => onChangeSection('ayuda')}
+        >
+          Ayuda
+        </button>
+      </nav>
+
+      <div className="topbar-right">
+        <span className="topbar-user-label">
+          {user?.name || user?.email || 'Usuario'}
+        </span>
+        <button type="button" className="topbar-cta" onClick={onLogout}>
+          Cerrar sesión
+        </button>
+      </div>
+    </header>
+  )
+}
+
 function Dashboard({ user, onLogout }) {
-  const [activeSection, setActiveSection] = useState('finanzas')
+  const [activeSection, setActiveSection] = useState('aplicaciones')
 
   const sections = {
-    perfil: {
-      title: 'Perfil del usuario',
+    aplicaciones: {
+      title: 'Panel principal',
       description:
-        'Aquí podrás ver y editar los datos básicos del usuario, cambiar contraseña y configurar la autenticación en dos pasos.',
+        'Aquí verás un resumen general de tus módulos de finanzas, contabilidad y otros componentes clave del sistema.',
     },
-    finanzas: {
-      title: 'Módulo de finanzas',
+    industrias: {
+      title: 'Industrias',
       description:
-        'Espacio pensado para el flujo de caja, bancos, cuentas por cobrar y pagar, y reportes financieros de alto nivel.',
+        'Sección pensada para configurar verticales de negocio, plantillas y buenas prácticas por industria.',
     },
-    contabilidad: {
-      title: 'Módulo de contabilidad',
+    empresas: {
+      title: 'Empresas',
       description:
-        'Aquí se centralizarán las pólizas contables, catálogo de cuentas, auxiliares y conciliaciones contables de producción.',
+        'Aquí podrás administrar las distintas empresas o razones sociales con las que trabajas dentro del sistema.',
     },
-    otros: {
-      title: 'Otros módulos',
+    precios: {
+      title: 'Precios y planes',
       description:
-        'Zona para integraciones futuras: inventario avanzado, producción, costos estándar, indicadores y más.',
+        'Aquí podrás definir planes de facturación, versiones del sistema y límites por tipo de suscripción.',
+    },
+    ayuda: {
+      title: 'Centro de ayuda',
+      description:
+        'Documentación, preguntas frecuentes y guías rápidas para los usuarios de tu sistema contable.',
     },
   }
 
   const current = sections[activeSection]
 
   return (
-    <div className="dashboard">
-      <header className="dashboard-header">
-        <div className="dashboard-header-left">
-          <div className="dashboard-logo">
-            <span className="dashboard-logo-initials">FA</span>
-          </div>
-          <div>
-            <h1>Panel principal</h1>
-            <p>
-              Bienvenido, <strong>{user?.name || user?.email}</strong>
-            </p>
-          </div>
-        </div>
+    <>
+      <DashboardTopBar
+        user={user}
+        onLogout={onLogout}
+        activeSection={activeSection}
+        onChangeSection={setActiveSection}
+      />
 
-        <div className="dashboard-header-right">
-          <nav className="dashboard-nav">
-            <button
-              type="button"
-              className={
-                activeSection === 'perfil'
-                  ? 'dashboard-nav-item dashboard-nav-item-active'
-                  : 'dashboard-nav-item'
-              }
-              onClick={() => setActiveSection('perfil')}
-            >
-              Perfil
-            </button>
-            <button
-              type="button"
-              className={
-                activeSection === 'finanzas'
-                  ? 'dashboard-nav-item dashboard-nav-item-active'
-                  : 'dashboard-nav-item'
-              }
-              onClick={() => setActiveSection('finanzas')}
-            >
-              Finanzas
-            </button>
-            <button
-              type="button"
-              className={
-                activeSection === 'contabilidad'
-                  ? 'dashboard-nav-item dashboard-nav-item-active'
-                  : 'dashboard-nav-item'
-              }
-              onClick={() => setActiveSection('contabilidad')}
-            >
-              Contabilidad
-            </button>
-            <button
-              type="button"
-              className={
-                activeSection === 'otros'
-                  ? 'dashboard-nav-item dashboard-nav-item-active'
-                  : 'dashboard-nav-item'
-              }
-              onClick={() => setActiveSection('otros')}
-            >
-              Otros
-            </button>
-          </nav>
-
-          <button className="logout" onClick={onLogout}>
-            Cerrar sesión
-          </button>
-        </div>
-      </header>
-
-      <main className="dashboard-main">
-        <section className="dashboard-card">
-          <h2>{current.title}</h2>
-          <p>{current.description}</p>
-        </section>
-      </main>
-    </div>
+      <div className="dashboard">
+        <main className="dashboard-main">
+          <section className="dashboard-card">
+            <h2>{current.title}</h2>
+            <p>{current.description}</p>
+          </section>
+        </main>
+      </div>
+    </>
   )
 }
 
@@ -283,8 +310,10 @@ function App() {
     }
   }
 
+  const rootClassName = user ? 'app-root app-root-dashboard' : 'app-root'
+
   return (
-    <div className="app-root">
+    <div className={rootClassName}>
       {checkingSession ? (
         <div className="loading">Verificando sesión...</div>
       ) : user ? (
